@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - 字体大小 - - - - - - - - - - - - - - - - - - - - -->
+
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_medium">15sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_very_small">13sp</dimen>
+    <dimen name="text_size_super_small">12sp</dimen>
+    <dimen name="text_size_micro">10sp</dimen>
+    <dimen name="text_size_medium_micro">11sp</dimen>
+
+    <!-- - - - - - - - - - - -->
+
+    <!--大按钮-->
+    <dimen name="text_size_button">@dimen/text_size_large</dimen>
+    <!--标题-->
+    <dimen name="text_size_title">@dimen/text_size_medium</dimen>
+    <!--正文-->
+    <dimen name="text_size_content">@dimen/text_size_small</dimen>
+    <!--描述性、批注-->
+    <dimen name="text_size_annotation">@dimen/text_size_very_small</dimen>
+    <!--Tab-->
+    <dimen name="text_size_tab">@dimen/text_size_micro</dimen>
+
+</resources>

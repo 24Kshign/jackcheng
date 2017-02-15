@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - 颜色 - - - - - - - - - - - - - - - - - - - - - -->
+
+    <color name="color_blue">#ff0e91ec</color>
+    <color name="color_blue_light">#ff00a0e9</color>
+
+    <color name="color_red_light">#ffff5555</color>
+
+    <color name="color_yellow_light">#fff8b551</color>
+
+    <color name="color_green_light">#ff13b5b1</color>
+
+    <color name="color_purple_light">#ff8957a1</color>
+
+    <color name="color_black_light">#ff555555</color>
+
+    <color name="color_gray_deep">#ff757575</color>
+    <color name="color_gray">#ff989898</color>
+    <color name="color_gray_light">#ffb3b3b3</color>
+
+    <color name="color_white_transparent">#ccffffff</color>
+
+    <color name="color_solid">#fff5faff</color>
+
+    <!-- - - - - - - - - - - -->
+
+    <color name="color_main_deep">@color/color_blue</color>
+    <color name="color_main">@color/color_blue</color>
+    <color name="color_main_light">@color/color_blue_light</color>
+
+    <color name="color_background">#fff8f8f8</color>
+
+    <color name="color_divider">#ffd6d6d6</color>
+
+    <color name="color_title_text">@color/color_black_light</color>
+
+</resources>

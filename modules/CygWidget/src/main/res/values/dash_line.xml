@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="DashLine">
+        <attr name="dash_color" format="color" />
+        <attr name="dash_height" format="float" />
+        <attr name="dash_width" format="float"/>
+        <attr name="dash_gap" format="float" />
+    </declare-styleable>
+
+</resources>
