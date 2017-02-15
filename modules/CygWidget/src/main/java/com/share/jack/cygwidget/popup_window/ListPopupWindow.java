@@ -149,7 +149,7 @@ public class ListPopupWindow extends BasePopupWindow {
         }
     }
 
-    //=============================================================init
+    //=============================================================initJPush
     private void setAdapter(Activity context, Builder builder) {
         if (builder.getItemEventList()==null||builder.getItemEventList().size()==0)return;
         final ListPopupAdapter adapter=new ListPopupAdapter(context,builder.getItemEventList());

@@ -14,6 +14,8 @@ import com.jack.mc.cyg.cygptr.PtrFrameLayout;
 import com.jack.mc.cyg.cygptr.PtrHandler;
 import com.jack.mc.cyg.cygptr.loadmore.OnLoadMoreListener;
 import com.share.jack.cygwidget.R;
+import com.share.jack.cygwidget.loadmore.OnScrollToBottomLoadMoreListener;
+import com.share.jack.cygwidget.refersh.OnPullToRefreshListener;
 
 
 /**
@@ -31,18 +33,6 @@ public class PtrListViewUIComponent extends PtrClassicFrameLayout {
 
     public PtrListViewUIComponent(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    public PtrListViewUIComponent(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    public interface OnPullToRefreshListener {
-        void onPullToRefresh();
-    }
-
-    public interface OnScrollToBottomLoadMoreListener {
-        void onScrollToBottomLoadMore();
     }
 
     private OnScrollToBottomLoadMoreListener mOnScrollToBottomLoadMoreListener;

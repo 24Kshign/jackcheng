@@ -10,17 +10,17 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 /**
  *
  */
-public class MyRecyclerView extends XRecyclerView {
+public class CygXRecyclerView extends XRecyclerView {
 
-    public MyRecyclerView(Context context) {
+    public CygXRecyclerView(Context context) {
         super(context);
     }
 
-    public MyRecyclerView(Context context, AttributeSet attrs) {
+    public CygXRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MyRecyclerView(Context context, AttributeSet attrs, int defStyle) {
+    public CygXRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

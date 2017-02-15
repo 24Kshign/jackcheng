@@ -69,7 +69,7 @@ public class EaseChatInputMenu extends LinearLayout {
     }
 
     /**
-     * init view 此方法需放在registerExtendMenuItem后面及setCustomEmojiconMenu，
+     * initJPush view 此方法需放在registerExtendMenuItem后面及setCustomEmojiconMenu，
      * setCustomPrimaryMenu(如果需要自定义这两个menu)后面
      * @param emojiconGroupList 表情组类别，传null使用easeui默认的表情
      */

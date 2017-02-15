@@ -10,7 +10,7 @@ public interface LoadMoreHandler {
      * @param contentView
      * @param loadMoreView
      * @param onClickLoadMoreListener
-     * @return 是否有 init ILoadMoreView
+     * @return 是否有 initJPush ILoadMoreView
      */
     public boolean handleSetAdapter(View contentView, ILoadMoreViewFactory.ILoadMoreView loadMoreView, OnClickListener
             onClickLoadMoreListener);

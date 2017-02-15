@@ -86,7 +86,7 @@ public class EaseContactList extends RelativeLayout {
     }
     
     /*
-     * init view
+     * initJPush view
      */
     public void init(List<EaseUser> contactList){
         this.contactList = contactList;

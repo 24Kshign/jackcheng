@@ -54,7 +54,7 @@ public class EaseChatMessageList extends RelativeLayout {
     }
     
     /**
-     * init widget
+     * initJPush widget
      * @param toChatUsername
      * @param chatType
      * @param customChatRowProvider

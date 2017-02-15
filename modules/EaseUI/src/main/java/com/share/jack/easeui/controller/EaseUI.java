@@ -46,7 +46,7 @@ public final class EaseUI {
     private Context appContext = null;
     
     /**
-     * init flag: test if the sdk has been inited before, we don't need to init again
+     * initJPush flag: test if the sdk has been inited before, we don't need to initJPush again
      */
     private boolean sdkInited = false;
     
@@ -127,7 +127,7 @@ public final class EaseUI {
     }
     
     protected void initChatOptions(){
-        Log.d(TAG, "init HuanXin Options");
+        Log.d(TAG, "initJPush HuanXin Options");
         
         // 获取到EMChatOptions对象
         EMChatOptions options = EMChatManager.getInstance().getChatOptions();
@@ -187,7 +187,7 @@ public final class EaseUI {
     
     
     /**
-     * check the application process name if process name is not qualified, then we think it is a service process and we will not init SDK
+     * check the application process name if process name is not qualified, then we think it is a service process and we will not initJPush SDK
      * @param pID
      * @return
      */

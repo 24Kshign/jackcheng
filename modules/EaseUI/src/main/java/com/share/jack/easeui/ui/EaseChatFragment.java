@@ -128,7 +128,7 @@ public class EaseChatFragment extends EaseBaseFragment implements EMEventListene
     }
 
     /**
-     * init view
+     * initJPush view
      */
     protected void initView() {
         // 按住说话录音控件
@@ -143,7 +143,7 @@ public class EaseChatFragment extends EaseBaseFragment implements EMEventListene
         extendMenuItemClickListener = new MyItemClickListener();
         inputMenu = (EaseChatInputMenu) getView().findViewById(R.id.input_menu);
         registerExtendMenuItem();
-        // init input menu
+        // initJPush input menu
         inputMenu.init(null);
         inputMenu.setChatInputMenuListener(new EaseChatInputMenu.ChatInputMenuListener() {
 

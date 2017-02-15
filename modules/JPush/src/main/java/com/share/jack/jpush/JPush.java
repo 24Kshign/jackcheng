@@ -14,7 +14,7 @@ public class JPush {
     public JPush() {
     }
 
-    public static void init() {
+    public static void initJPush() {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(CygApplication.getInstance());
     }

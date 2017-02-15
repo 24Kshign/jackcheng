@@ -106,7 +106,7 @@ public class EaseContactListFragment extends EaseBaseFragment {
         contactList = new ArrayList<EaseUser>();
         // 获取设置contactlist
         getContactList();
-        //init list
+        //initJPush list
         contactListLayout.init(contactList);
         
         if(listItemClickListener != null){
