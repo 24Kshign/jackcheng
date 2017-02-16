@@ -11,7 +11,7 @@ import com.jack.mc.cyg.cygptr.PtrFrameLayout;
 import com.jack.mc.cyg.cygptr.loadmore.OnLoadMoreListener;
 import com.share.jack.cygwidget.R;
 import com.share.jack.cygwidget.loadmore.OnScrollToBottomLoadMoreListener;
-import com.share.jack.cygwidget.recyclerview.divider.RecycleViewDivider;
+import com.share.jack.cygwidget.recyclerview.divider.RecyclerViewDivider;
 import com.share.jack.cygwidget.refersh.OnPullToRefreshListener;
 
 
@@ -89,7 +89,7 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
      *
      * @param divider 自定义的分割线
      */
-    public void setRecyclerViewDivider(RecycleViewDivider divider) {
+    public void setRecyclerViewDivider(RecyclerViewDivider divider) {
         mRecyclerView.addItemDecoration(divider);
     }
 

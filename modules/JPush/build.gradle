@@ -17,7 +17,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':GreenDao')
     compile files('libs/jpush-android-2.2.0.jar')
 }

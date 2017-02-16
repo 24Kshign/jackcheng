@@ -53,6 +53,18 @@ public final class CygEnvironment {
         return CygApplication.getInstance().getExternalFilesDir(null);
     }
 
+    /**
+     * 获取sd卡根目录文件
+     * @return
+     */
+    public static File getExternalStorageDirectory(){
+        if (!hasExternalStorage()){
+            CygLog.error("没有SDK卡！");
+            return null;
+        }
+        return Environment.getExternalStorageDirectory();
+    }
+
     //获取应用files目录路径
     public static String getExternalFilesPath() {
         File file = getExternalFilesDir();
