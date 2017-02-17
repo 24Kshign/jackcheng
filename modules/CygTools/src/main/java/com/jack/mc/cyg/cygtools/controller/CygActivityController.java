@@ -1,11 +1,14 @@
 package com.jack.mc.cyg.cygtools.controller;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.jack.mc.cyg.cygtools.eventbus.CygEventBusUtil;
 import com.jack.mc.cyg.cygtools.inputmethod.CygInputMethodManager;
-import com.jack.mc.cyg.cygtools.activity.CygActivity;
+import com.jack.mc.cyg.cygtools.inputmethod.CygView;
 
 /**
  *
@@ -17,15 +20,15 @@ public class CygActivityController {
     }
 
     private Activity mActivity;
-    private static boolean mAutoHideSoftInput = false;
+    private boolean mAutoHideSoftInput = false;
 
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        CygEventBusUtil.registerSubscriber(mActivity);
-//    }
-//
-//    public void onDestroy() {
-//        CygEventBusUtil.unregisterSubscriber(mActivity);
-//    }
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        CygEventBusUtil.registerSubscriber(mActivity);
+    }
+
+    public void onDestroy() {
+        CygEventBusUtil.unregisterSubscriber(mActivity);
+    }
 
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (mAutoHideSoftInput) {
@@ -34,12 +37,12 @@ public class CygActivityController {
         return false;
     }
 
-    public static void setAutoHideSoftInput(boolean autoHide) {
+    public void setAutoHideSoftInput(boolean autoHide) {
         mAutoHideSoftInput = autoHide;
     }
 
 
     public final View layoutInflate(int layoutResource) {
-        return CygActivity.layoutInflate(mActivity, layoutResource);
+        return CygView.inflateLayout(mActivity, layoutResource);
     }
 }

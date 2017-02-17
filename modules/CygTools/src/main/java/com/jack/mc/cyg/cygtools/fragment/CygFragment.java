@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jack.mc.cyg.cygtools.activity.CygActivity;
+import com.jack.mc.cyg.cygtools.activity.CygActivityUtil;
 import com.jack.mc.cyg.cygtools.eventbus.CygEventBusUtil;
 import com.jack.mc.cyg.cygtools.inputmethod.CygView;
 import com.jack.mc.cyg.cygtools.util.CygLog;
@@ -83,7 +83,7 @@ public abstract class CygFragment extends Fragment {
     }
 
     protected final boolean isAlive() {
-        return CygActivity.isActive(getActivity());
+        return CygActivityUtil.isActive(getActivity());
     }
 
     protected final View inflateLayout(@LayoutRes int layoutRes) {

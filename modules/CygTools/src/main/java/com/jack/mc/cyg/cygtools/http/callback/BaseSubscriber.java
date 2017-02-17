@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.jack.mc.cyg.cygtools.http.progress.ProgressCancelListener;
 import com.jack.mc.cyg.cygtools.http.progress.ProgressDialogHandler;
-import com.jack.mc.cyg.cygtools.activity.CygActivity;
+import com.jack.mc.cyg.cygtools.activity.CygActivityUtil;
 
 import rx.Subscriber;
 
@@ -49,7 +49,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
 
     @Override
     public void onError(Throwable t) {
-        if (!CygActivity.isActive(activity)) {
+        if (!CygActivityUtil.isActive(activity)) {
             return;
         }
         //关闭进度条
@@ -62,7 +62,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
     //订阅开始
     @Override
     public void onStart() {
-        if (!CygActivity.isActive(activity)) {
+        if (!CygActivityUtil.isActive(activity)) {
             return;
         }
         Log.d(TAG, "http is start");
@@ -75,7 +75,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
     //订阅完成
     @Override
     public void onCompleted() {
-        if (!CygActivity.isActive(activity)) {
+        if (!CygActivityUtil.isActive(activity)) {
             return;
         }
         Log.d(TAG, "http is Complete");
@@ -87,7 +87,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
 
     @Override
     public void onNext(T t) {
-        if (!CygActivity.isActive(activity)) {
+        if (!CygActivityUtil.isActive(activity)) {
             return;
         }
         onBaseNext(t);

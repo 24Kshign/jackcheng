@@ -2,6 +2,7 @@ package com.jack.mc.cyg.cygtools.activity;
 
 import android.app.Activity;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,7 +18,7 @@ import com.jack.mc.cyg.cygtools.controller.CygActivityController;
  */
 public class CygBaseActivity extends Activity implements CygActivityInterface {
 
-    private CygActivityController mActivityController = new CygActivityController(this);
+    private final CygActivityController mActivityController = new CygActivityController(this);
 
     public View mStatusBar;  //状态栏
     public String immersionType = TYPE_LAYOUT;   //当前沉浸模式，默认为布局沉浸式
@@ -32,13 +33,26 @@ public class CygBaseActivity extends Activity implements CygActivityInterface {
         return super.dispatchTouchEvent(event);
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mActivityController.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mActivityController.onDestroy();
+    }
+
     /**
      * 设置点击edittext外部隐藏键盘
+     *
      * @param autoHide
      */
     @Override
     public void setAutoHideSoftInput(boolean autoHide) {
-        CygActivityController.setAutoHideSoftInput(autoHide);
+        mActivityController.setAutoHideSoftInput(autoHide);
     }
 
     @Override
