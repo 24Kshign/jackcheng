@@ -314,7 +314,7 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
 
     private RecyclerView.Adapter<ViewHolder> mAdapter;
 
-    public RecyclerAdapterWithHF(RecyclerView.Adapter<ViewHolder> adapter) {
+    public <T extends RecyclerView.Adapter> RecyclerAdapterWithHF(T adapter) {
         super();
         this.mAdapter = adapter;
         adapter.registerAdapterDataObserver(adapterDataObserver);

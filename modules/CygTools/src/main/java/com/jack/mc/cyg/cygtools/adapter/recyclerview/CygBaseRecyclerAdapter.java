@@ -24,7 +24,7 @@ public abstract class CygBaseRecyclerAdapter<DATA, VH extends CygBaseRecyclerVie
     }
 
     public CygBaseRecyclerAdapter(Context context) {
-        this.mContext = context;
+        this(context, null);
     }
 
     protected Context getContext() {
@@ -101,6 +101,7 @@ public abstract class CygBaseRecyclerAdapter<DATA, VH extends CygBaseRecyclerVie
         notifyItemInserted(position);  //插入更新操作
         notifyItemRangeChanged(position, mDataList.size() - position);  //更新position后面的数据的位置
     }
+
     public void removeItem(int position) {
         mDataList.remove(position);
         notifyItemRemoved(position);  //删除操作更新

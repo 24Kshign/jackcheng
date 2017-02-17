@@ -34,9 +34,8 @@ public abstract class NewBaseApi {
 //        builder.addInterceptor(new MarvelSigningInterceptor("TAG"));
         builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         OkHttpClient okHttpClient = builder.build();
-
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(HttpServletAddress.getInstance().getOnlineAddress())
+                .baseUrl(HttpServletAddress.getInstance().getServletAddress())
                 .client(okHttpClient)
                 .addConverterFactory(CustomGsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

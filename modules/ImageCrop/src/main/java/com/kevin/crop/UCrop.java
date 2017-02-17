@@ -44,6 +44,14 @@ public class UCrop {
     public static final String EXTRA_MAX_SIZE_X = EXTRA_PREFIX + ".MaxSizeX";
     public static final String EXTRA_MAX_SIZE_Y = EXTRA_PREFIX + ".MaxSizeY";
 
+    //boolean isScaleEnable, boolean isRotateEnabled, boolean isOvalDimmedLayer, boolean isShowCropFrame, boolean isShowCropGrid
+    public static final String IS_SCALE_ENABLE = EXTRA_PREFIX + ".ScaleEnable";
+    public static final String IS_ROTATE_ENABLED = EXTRA_PREFIX + ".RotateEnabled";
+    public static final String IS_OVAL_DIMMED_LAYER = EXTRA_PREFIX + ".OvalDimmedLayer";
+    public static final String IS_SHOW_CROP_FRAME = EXTRA_PREFIX + ".ShowCropFrame";
+    public static final String IS_SHOW_CROP_GRID = EXTRA_PREFIX + ".ShowCropGrid";
+
+
     private Intent mCropIntent;
     private Bundle mCropOptionsBundle;
 
@@ -121,6 +129,26 @@ public class UCrop {
     }
 
     /**
+     * 设置Crop的一些列参数
+     *
+     * @param isScaleEnable     是否允许缩放
+     * @param isRotateEnabled   是否允许旋转
+     * @param isOvalDimmedLayer 周围阴影是否为椭圆(如果false则为矩形)
+     * @param isShowCropFrame   是否显示裁剪边框
+     * @param isShowCropGrid    是否显示裁剪网格
+     * @return
+     */
+    public UCrop setCropParameter(boolean isScaleEnable, boolean isRotateEnabled, boolean isOvalDimmedLayer
+            , boolean isShowCropFrame, boolean isShowCropGrid) {
+        mCropOptionsBundle.putBoolean(IS_SCALE_ENABLE, isScaleEnable);
+        mCropOptionsBundle.putBoolean(IS_ROTATE_ENABLED, isRotateEnabled);
+        mCropOptionsBundle.putBoolean(IS_OVAL_DIMMED_LAYER, isOvalDimmedLayer);
+        mCropOptionsBundle.putBoolean(IS_SHOW_CROP_FRAME, isShowCropFrame);
+        mCropOptionsBundle.putBoolean(IS_SHOW_CROP_GRID, isShowCropGrid);
+        return this;
+    }
+
+    /**
      * Send the crop Intent from an Activity
      *
      * @param activity Activity to receive result
@@ -191,6 +219,7 @@ public class UCrop {
 
     /**
      * 设置目标Actiivty的字节码
+     *
      * @param cls
      * @return
      */
