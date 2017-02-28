@@ -10,9 +10,9 @@ import com.afollestad.materialdialogs.MaterialDialog;
 /**
  *
  */
-public final class CygDialog {
+public final class CygMaterialDialog {
 
-    private CygDialog() {
+    private CygMaterialDialog() {
     }
 
     /**

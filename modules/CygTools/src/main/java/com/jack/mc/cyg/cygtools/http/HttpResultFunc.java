@@ -1,6 +1,8 @@
 package com.jack.mc.cyg.cygtools.http;
 
 
+import com.jack.mc.cyg.cygtools.util.CygLog;
+
 import rx.functions.Func1;
 
 /**
@@ -11,7 +13,8 @@ import rx.functions.Func1;
 public class HttpResultFunc<T> implements Func1<BaseResponse<T>, T> {
     @Override
     public T call(BaseResponse<T> httpResult) {
-        if (httpResult.isCodeInvalid()) {
+        if (!httpResult.isRequestSuccess()) {
+            CygLog.error();
             throw new ApiException(httpResult.getStatus(), httpResult.getMsg());
         }
         return httpResult.getData();

@@ -1,9 +1,10 @@
 package com.jack.mc.cyg.cygtools.inputmethod;
 
-import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -28,9 +29,9 @@ public final class CygView {
         }
     }
 
-    public static <VIEW extends View> VIEW inflateLayout(Activity activity, @LayoutRes int layoutRes, @Nullable ViewGroup root, boolean attachToRoot) {
+    public static <VIEW extends View> VIEW inflateLayout(Context context, @LayoutRes int layoutRes, @Nullable ViewGroup root, boolean attachToRoot) {
         try {
-            View view = activity.getLayoutInflater().inflate(layoutRes, root, attachToRoot);
+            View view = LayoutInflater.from(context).inflate(layoutRes, root, attachToRoot);
             return fromView(view);
         } catch (Exception e) {
             CygLog.error(e);
@@ -38,9 +39,9 @@ public final class CygView {
         }
     }
 
-    public static <VIEW extends View> VIEW inflateLayout(Activity activity, @LayoutRes int layoutRes, @Nullable ViewGroup root) {
+    public static <VIEW extends View> VIEW inflateLayout(Context context, @LayoutRes int layoutRes, @Nullable ViewGroup root) {
         try {
-            View view = activity.getLayoutInflater().inflate(layoutRes, root);
+            View view = LayoutInflater.from(context).inflate(layoutRes, root);
             return fromView(view);
         } catch (Exception e) {
             CygLog.error(e);
@@ -48,9 +49,9 @@ public final class CygView {
         }
     }
 
-    public static <VIEW extends View> VIEW inflateLayout(Activity activity, @LayoutRes int layoutRes) {
+    public static <VIEW extends View> VIEW inflateLayout(Context context, @LayoutRes int layoutRes) {
         try {
-            View view = activity.getLayoutInflater().inflate(layoutRes, null);
+            View view = LayoutInflater.from(context).inflate(layoutRes, null);
             return fromView(view);
         } catch (Exception e) {
             CygLog.error(e);

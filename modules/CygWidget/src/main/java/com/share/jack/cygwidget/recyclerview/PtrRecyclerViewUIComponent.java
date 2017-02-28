@@ -1,6 +1,7 @@
 package com.share.jack.cygwidget.recyclerview;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.jack.mc.cyg.cygptr.PtrClassicFrameLayout;
 import com.jack.mc.cyg.cygptr.PtrDefaultHandler;
 import com.jack.mc.cyg.cygptr.PtrFrameLayout;
 import com.jack.mc.cyg.cygptr.loadmore.OnLoadMoreListener;
+import com.jack.mc.cyg.cygtools.inputmethod.CygView;
 import com.share.jack.cygwidget.R;
 import com.share.jack.cygwidget.loadmore.OnScrollToBottomLoadMoreListener;
 import com.share.jack.cygwidget.recyclerview.divider.RecyclerViewDivider;
@@ -33,7 +35,7 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
         super(context, attrs, defStyle);
     }
 
-    private RecyclerView mRecyclerView;
+    private RecyclerViewWithEV mRecyclerView;
 
     private OnScrollToBottomLoadMoreListener mOnScrollToBottomLoadMoreListener;
 
@@ -54,7 +56,7 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
     }
 
     private void init() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_uicomponent);
+        mRecyclerView = (RecyclerViewWithEV) findViewById(R.id.recyclerview_uicomponent);
 
         setPtrHandler(new PtrDefaultHandler() {
             @Override
@@ -82,6 +84,20 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
 
     public <T extends RecyclerView.Adapter> void setAdapter(T adapter) {
         mRecyclerView.setAdapter(adapter);
+    }
+
+    /**
+     * 设置emptyView
+     *
+     * @param emptyView
+     */
+    public void setEmptyView(View emptyView) {
+        mRecyclerView.setEmptyView(emptyView);
+    }
+
+    public void setEmptyView(@LayoutRes int emptyResLayout) {
+        View emptyView = CygView.inflateLayout(getContext(), emptyResLayout);
+        setEmptyView(emptyView);
     }
 
     /**

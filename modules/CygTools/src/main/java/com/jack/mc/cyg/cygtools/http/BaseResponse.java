@@ -1,13 +1,22 @@
 package com.jack.mc.cyg.cygtools.http;
 
-/**
- *
- */
-public class BaseResponse<T> {
+import com.google.gson.annotations.SerializedName;
 
-    public int status;
-    public String msg;
-    public T data;
+import java.io.Serializable;
+
+/**
+ * 服务器返回的json基类
+ */
+public class BaseResponse<T> implements Serializable {
+
+    @SerializedName("status")
+    private int status;
+
+    @SerializedName("msg")
+    private String msg;
+
+    @SerializedName("data")
+    private T data;
 
     public Integer getStatus() {
         return status;
@@ -34,11 +43,11 @@ public class BaseResponse<T> {
     }
 
     /**
-     * API是否请求失败
+     * API是否请求成功
      *
-     * @return 失败返回true, 成功返回false
+     * @return 成功返回true, 失败返回false
      */
-    public boolean isCodeInvalid() {
-        return status != ConstantCode.REQUEST_SUCCESS;
+    public boolean isRequestSuccess() {
+        return status == ConstantCode.REQUEST_SUCCESS;
     }
 }

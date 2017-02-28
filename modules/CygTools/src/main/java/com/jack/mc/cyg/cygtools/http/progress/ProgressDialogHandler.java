@@ -21,13 +21,10 @@ public class ProgressDialogHandler extends Handler {
 
     private Activity activity;
     private boolean cancelable;
-    private ProgressCancelListener mProgressCancelListener;
 
-    public ProgressDialogHandler(Activity activity, ProgressCancelListener mProgressCancelListener,
-                                 boolean cancelable) {
+    public ProgressDialogHandler(Activity activity,boolean cancelable) {
         super();
         this.activity = activity;
-        this.mProgressCancelListener = mProgressCancelListener;
         this.cancelable = cancelable;
     }
 
@@ -43,7 +40,7 @@ public class ProgressDialogHandler extends Handler {
                 pd.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
                     public void onCancel(DialogInterface dialogInterface) {
-                        mProgressCancelListener.onCancelProgress();
+                        dismissProgressDialog();
                     }
                 });
             }

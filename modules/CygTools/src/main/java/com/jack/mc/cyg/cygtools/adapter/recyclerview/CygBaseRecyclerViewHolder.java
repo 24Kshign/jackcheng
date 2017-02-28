@@ -2,14 +2,17 @@ package com.jack.mc.cyg.cygtools.adapter.recyclerview;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 
+import com.jack.mc.cyg.cygtools.util.CygLog;
+
 /**
  * 对RecyclerView的ViewHolder的封装
  */
-public abstract class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
+public class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
 
     public View itemView;
     private SparseArray<View> mViews;
@@ -19,6 +22,11 @@ public abstract class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewH
         this.itemView = view;
         mViews = new SparseArray<>();
     }
+
+    public static CygBaseRecyclerViewHolder createViewHolder(View view) {
+        return new CygBaseRecyclerViewHolder(view);
+    }
+
 
     /**
      * 根据id来获取布局中的view
@@ -45,5 +53,15 @@ public abstract class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewH
         return itemView.getContext();
     }
 
-    public abstract void setData(DATA data);
+    public final void setData(DATA data){
+        try {
+            onItemDataUpdated(data);
+        } catch (Exception e) {
+            CygLog.error(e);
+        }
+    }
+
+    protected void onItemDataUpdated(@Nullable DATA data) {
+
+    }
 }

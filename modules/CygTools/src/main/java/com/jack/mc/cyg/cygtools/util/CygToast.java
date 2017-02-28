@@ -6,7 +6,7 @@ import com.jack.mc.cyg.cygtools.app.CygApplication;
 
 
 /**
- * toast封装
+ * 对Toast封装
  */
 public final class CygToast {
 

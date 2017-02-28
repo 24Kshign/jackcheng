@@ -90,6 +90,13 @@ public abstract class CygBaseRecyclerAdapter<DATA, VH extends CygBaseRecyclerVie
         }
     }
 
+    public void removeAllDataList() {
+        if (mDataList != null) {
+            mDataList.clear();
+            notifyDataSetChanged();
+        }
+    }
+
     /**
      * 在列表某个位置插入数据
      *
@@ -102,6 +109,11 @@ public abstract class CygBaseRecyclerAdapter<DATA, VH extends CygBaseRecyclerVie
         notifyItemRangeChanged(position, mDataList.size() - position);  //更新position后面的数据的位置
     }
 
+    /**
+     * 移除某个位置的数据
+     *
+     * @param position
+     */
     public void removeItem(int position) {
         mDataList.remove(position);
         notifyItemRemoved(position);  //删除操作更新

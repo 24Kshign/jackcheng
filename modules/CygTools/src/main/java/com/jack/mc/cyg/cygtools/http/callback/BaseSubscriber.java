@@ -1,20 +1,17 @@
 package com.jack.mc.cyg.cygtools.http.callback;
 
 import android.app.Activity;
-import android.util.Log;
 
-import com.jack.mc.cyg.cygtools.http.progress.ProgressCancelListener;
-import com.jack.mc.cyg.cygtools.http.progress.ProgressDialogHandler;
 import com.jack.mc.cyg.cygtools.activity.CygActivityUtil;
+import com.jack.mc.cyg.cygtools.http.progress.ProgressDialogHandler;
+import com.jack.mc.cyg.cygtools.util.CygLog;
 
 import rx.Subscriber;
 
 /**
  * BaseSubscriber
  */
-public abstract class BaseSubscriber<T> extends Subscriber<T> implements ProgressCancelListener {
-
-    private final static String TAG = "BaseSubscriber";
+public abstract class BaseSubscriber<T> extends Subscriber<T> {
 
     protected abstract void onBaseError(Throwable t);
 
@@ -29,7 +26,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
 
     public BaseSubscriber(Activity activity) {
         this.activity = activity;
-        mProgressDialogHandler = new ProgressDialogHandler(activity, this, true);
+        mProgressDialogHandler = new ProgressDialogHandler(activity, true);
     }
 
     private void showProgressDialog() {
@@ -44,7 +41,6 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
             mProgressDialogHandler = null;
         }
     }
-
 
 
     @Override
@@ -65,7 +61,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
         if (!CygActivityUtil.isActive(activity)) {
             return;
         }
-        Log.d(TAG, "http is start");
+        CygLog.info("http is start");
         //显示进度条
         if (isNeedProgressDialog()) {
             showProgressDialog();
@@ -78,7 +74,7 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
         if (!CygActivityUtil.isActive(activity)) {
             return;
         }
-        Log.d(TAG, "http is Complete");
+        CygLog.info("http is Complete");
         //关闭进度条
         if (isNeedProgressDialog()) {
             dismissProgressDialog();
@@ -91,12 +87,5 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> implements Progres
             return;
         }
         onBaseNext(t);
-    }
-
-    @Override
-    public void onCancelProgress() {
-        if (!this.isUnsubscribed()) {
-            this.unsubscribe();
-        }
     }
 }
