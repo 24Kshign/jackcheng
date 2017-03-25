@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomVerifyCodeView">
+        <attr name="cus_text_size" format="dimension" />
+        <attr name="cus_time_count" format="integer" />
+        <attr name="cus_text_color_enable" format="color|reference" />
+        <attr name="cus_text_color_disable" format="color|reference" />
+    </declare-styleable>
+</resources>

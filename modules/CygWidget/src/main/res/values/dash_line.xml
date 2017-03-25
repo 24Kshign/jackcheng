@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="DashLine">
+    <declare-styleable name="DashLineView">
         <attr name="dash_color" format="color" />
-        <attr name="dash_height" format="float" />
-        <attr name="dash_width" format="float"/>
-        <attr name="dash_gap" format="float" />
+        <attr name="dash_width" format="dimension" />
+        <attr name="dash_gap" format="dimension" />
+        <attr name="dash_orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
     </declare-styleable>
 
 </resources>
