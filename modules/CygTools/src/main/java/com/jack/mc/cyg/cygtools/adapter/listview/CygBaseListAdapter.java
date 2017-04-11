@@ -13,7 +13,7 @@ import java.util.List;
  */
 public abstract class CygBaseListAdapter<T> extends BaseAdapter {
 
-//    protected abstract View getView(int position, View convertView, ViewGroup parent, T data);
+//    protected abstract View findView(int position, View convertView, ViewGroup parent, T data);
 
     protected abstract CygBaseListViewHolder<T> getHolder(ViewGroup parent);
 
@@ -99,13 +99,13 @@ public abstract class CygBaseListAdapter<T> extends BaseAdapter {
     }
 
     //    @Override
-//    public final View getView(int position, View convertView, ViewGroup parent) {
+//    public final View findView(int position, View convertView, ViewGroup parent) {
 //        try {
 //            T data = null;
 //            if (mDataList != null && mDataList.size() > position) {
 //                data = mDataList.get(position);
 //            }
-//            return getView(position, convertView, parent, data);
+//            return findView(position, convertView, parent, data);
 //        } catch (Exception e) {
 //            CygLog.error(e);
 //        }

@@ -34,9 +34,9 @@ public abstract class CygFragment extends Fragment {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * root view 与 getView() 的区别：
+     * root view 与 findView() 的区别：
      * isSaveViewStatus()为true的情况下，root view 创建后就一直存在，保存着view的状态
-     * getView() 在 Fragment 里控制，通过 FragmentTransaction 进行各种操作的时候会丢失view
+     * findView() 在 Fragment 里控制，通过 FragmentTransaction 进行各种操作的时候会丢失view
      */
     private View mRootView;
 

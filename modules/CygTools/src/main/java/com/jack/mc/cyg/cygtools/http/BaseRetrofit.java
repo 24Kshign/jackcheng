@@ -52,7 +52,7 @@ public abstract class BaseRetrofit {
                 .observeOn(AndroidSchedulers.mainThread())  // 指定Subscriber的回调发生在io线程
                 .timeout(DEFAULT_TIME, TimeUnit.SECONDS)    //重连间隔时间
                 .retry(RETRY_TIME)    //接收到onError()事件后触发重订阅
-                .subscribe(s));
+                .subscribe(s));   //订阅
     }
 
     private void addSubscription(Subscription subscription) {

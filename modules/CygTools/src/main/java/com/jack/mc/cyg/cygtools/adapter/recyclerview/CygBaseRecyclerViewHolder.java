@@ -35,7 +35,7 @@ public class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
      * @param <T>
      * @return
      */
-    protected <T extends View> T getView(@IdRes int resId) {
+    protected <T extends View> T findView(@IdRes int resId) {
         View view = mViews.get(resId);
         if (view == null) {
             view = itemView.findViewById(resId);

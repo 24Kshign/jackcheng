@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 
+import com.google.gson.JsonSyntaxException;
 import com.jack.mc.cyg.cygtools.http.ApiException;
 import com.jack.mc.cyg.cygtools.util.CygString;
 import com.jack.mc.cyg.cygtools.util.CygToast;
@@ -62,10 +63,11 @@ public abstract class CygSubscriberApi<T> extends BaseSubscriber<T> {
         sb.append("请求失败：");
         if (t instanceof NetworkErrorException || t instanceof UnknownHostException) {
             sb.append("网络异常");
-        } else if (t instanceof SocketTimeoutException || t instanceof ConnectException) {
+        } else if (t instanceof SocketTimeoutException || t instanceof ConnectException
+                || t instanceof IOException) {
             sb.append("请求超时");
-        } else if (t instanceof IOException) {
-            sb.append("请求超时");
+        } else if (t instanceof JsonSyntaxException) {
+            sb.append("请求不合法");
         } else if (t instanceof ApiException) {
             ApiException exception = (ApiException) t;
             if (exception.isTokenExpried()) {

@@ -499,7 +499,7 @@ public class GridViewWithHeaderAndFooter extends GridView {
         boolean mAreAllFixedViewsSelectable;
         private final boolean mIsFilterable;
         private boolean mCachePlaceHoldView = true;
-        // From Recycle Bin or calling getView, this a question...
+        // From Recycle Bin or calling findView, this a question...
         private boolean mCacheFirstHeaderView = false;
 
         public HeaderViewGridAdapter(ArrayList<FixedViewInfo> headerViewInfos, ArrayList<FixedViewInfo> footViewInfos, ListAdapter adapter) {
@@ -690,7 +690,7 @@ public class GridViewWithHeaderAndFooter extends GridView {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (DEBUG) {
-                Log.d(LOG_TAG, String.format("getView: %s, reused: %s", position, convertView == null));
+                Log.d(LOG_TAG, String.format("findView: %s, reused: %s", position, convertView == null));
             }
             // Header (negative positions will throw an ArrayIndexOutOfBoundsException)
             int numHeadersAndPlaceholders = getHeadersCount() * mNumColumns;
