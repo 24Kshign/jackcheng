@@ -23,6 +23,8 @@ import com.share.jack.cygwidget.refersh.OnPullToRefreshListener;
 
 public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
 
+    private boolean canRefresh = true;
+
     public PtrRecyclerViewUIComponent(Context context) {
         super(context);
     }
@@ -56,6 +58,7 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
     }
 
     private void init() {
+        disableWhenHorizontalMove(true);
         mRecyclerView = (RecyclerViewWithEV) findViewById(R.id.recyclerview_uicomponent);
 
         setPtrHandler(new PtrDefaultHandler() {
@@ -66,6 +69,9 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
 
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                if (!canRefresh) {
+                    return false;
+                }
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, mRecyclerView, header);
             }
         });
@@ -84,6 +90,10 @@ public class PtrRecyclerViewUIComponent extends PtrClassicFrameLayout {
 
     public <T extends RecyclerView.Adapter> void setAdapter(T adapter) {
         mRecyclerView.setAdapter(adapter);
+    }
+
+    public void setCanRefresh(boolean canRefresh) {
+        this.canRefresh = canRefresh;
     }
 
     /**

@@ -7,10 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.jack.mc.cyg.cygtools.http.callback.RxBus;
-import com.share.jack.jpush.event.JPushAutoRefresh;
-import com.share.jack.jpush.event.JPushRegistrationIdEvent;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +31,7 @@ public class MyReceiver extends BroadcastReceiver {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             Log.i(TAG, "[MyReceiver] 接收Registration Id : " + regId);
             //send the Registration Id to your server...
-            RxBus.getInstance().post(new JPushRegistrationIdEvent(regId));
+//            RxBus.getInstance().post(new JPushRegistrationIdEvent(regId));
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Log.i(TAG, "接收到推送下来的通知");
             String title = bundle.getString(JPushInterface.EXTRA_NOTIFICATION_TITLE);
@@ -54,7 +50,7 @@ public class MyReceiver extends BroadcastReceiver {
             context.startActivity(i);
         } else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 接收到推送下来的自定义消息: " + bundle.getString(JPushInterface.EXTRA_MESSAGE));
-            RxBus.getInstance().post(new JPushAutoRefresh());
+//            RxBus.getInstance().post(new JPushAutoRefresh());
         }
     }
 

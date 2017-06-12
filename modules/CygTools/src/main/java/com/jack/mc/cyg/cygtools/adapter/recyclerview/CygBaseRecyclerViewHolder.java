@@ -12,7 +12,7 @@ import com.jack.mc.cyg.cygtools.util.CygLog;
 /**
  * 对RecyclerView的ViewHolder的封装
  */
-public class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
+public abstract class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
 
     public View itemView;
     private SparseArray<View> mViews;
@@ -22,11 +22,6 @@ public class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
         this.itemView = view;
         mViews = new SparseArray<>();
     }
-
-    public static CygBaseRecyclerViewHolder createViewHolder(View view) {
-        return new CygBaseRecyclerViewHolder(view);
-    }
-
 
     /**
      * 根据id来获取布局中的view
@@ -61,7 +56,5 @@ public class CygBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHolder {
         }
     }
 
-    protected void onItemDataUpdated(@Nullable DATA data) {
-
-    }
+    protected abstract void onItemDataUpdated(@Nullable DATA data);
 }

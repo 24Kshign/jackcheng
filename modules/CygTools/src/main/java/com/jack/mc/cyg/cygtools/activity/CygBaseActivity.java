@@ -16,7 +16,7 @@ import com.jack.mc.cyg.cygtools.controller.CygActivityController;
 /**
  * Activity基类的封装
  */
-public class CygBaseActivity extends Activity implements CygActivityInterface {
+public abstract class CygBaseActivity extends Activity implements CygActivityInterface {
 
     private final CygActivityController mActivityController = new CygActivityController(this);
 
@@ -33,10 +33,13 @@ public class CygBaseActivity extends Activity implements CygActivityInterface {
         return super.dispatchTouchEvent(event);
     }
 
+    protected abstract int layoutRes();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivityController.onCreate(savedInstanceState);
+        setContentView(layoutRes());
     }
 
     @Override

@@ -1,17 +1,17 @@
 package com.jack.mc.cyg.cygtools.http.callback;
 
-import android.app.Activity;
-
-import com.jack.mc.cyg.cygtools.activity.CygActivityUtil;
 import com.jack.mc.cyg.cygtools.http.progress.ProgressDialogHandler;
 import com.jack.mc.cyg.cygtools.util.CygLog;
 
-import rx.Subscriber;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+
 
 /**
- * BaseSubscriber
+ *
  */
-public abstract class BaseSubscriber<T> extends Subscriber<T> {
+
+public abstract class BaseObserver<T> implements Observer<T> {
 
     protected abstract void onBaseError(Throwable t);
 
@@ -22,11 +22,15 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
     protected abstract String getTitleMsg();
 
     private ProgressDialogHandler mProgressDialogHandler;
-    private Activity activity;
+    private BaseImpl mBaseImpl;
 
-    public BaseSubscriber(Activity activity) {
-        this.activity = activity;
-        mProgressDialogHandler = new ProgressDialogHandler(activity, true);
+    public BaseObserver(BaseImpl baseImpl) {
+        mBaseImpl = baseImpl;
+        if (null != mBaseImpl) {
+            if (null == mProgressDialogHandler) {
+                mProgressDialogHandler = new ProgressDialogHandler(baseImpl.getActivity(), true);
+            }
+        }
     }
 
     private void showProgressDialog() {
@@ -42,50 +46,41 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
         }
     }
 
-
     @Override
-    public void onError(Throwable t) {
-        if (!CygActivityUtil.isActive(activity)) {
-            return;
-        }
-        //关闭进度条
-        if (isNeedProgressDialog()) {
-            dismissProgressDialog();
-        }
-        onBaseError(t);
-    }
-
-    //订阅开始
-    @Override
-    public void onStart() {
-        if (!CygActivityUtil.isActive(activity)) {
-            return;
-        }
-        CygLog.info("http is start");
+    public void onSubscribe(Disposable d) {
         //显示进度条
         if (isNeedProgressDialog()) {
             showProgressDialog();
         }
+        if (null != mBaseImpl) {
+            mBaseImpl.addDisposable(d);
+        }
     }
 
-    //订阅完成
     @Override
-    public void onCompleted() {
-        if (!CygActivityUtil.isActive(activity)) {
-            return;
+    public void onNext(T value) {
+        //成功
+        CygLog.debug("http is onNext");
+        if (null!=value) {
+            onBaseNext(value);
         }
-        CygLog.info("http is Complete");
+    }
+
+    @Override
+    public void onError(Throwable e) {
+        //关闭进度条
+        CygLog.error("http is onError");
+        if (isNeedProgressDialog()) {
+            dismissProgressDialog();
+        }
+        onBaseError(e);
+    }
+
+    @Override
+    public void onComplete() {
         //关闭进度条
         if (isNeedProgressDialog()) {
             dismissProgressDialog();
         }
-    }
-
-    @Override
-    public void onNext(T t) {
-        if (!CygActivityUtil.isActive(activity)) {
-            return;
-        }
-        onBaseNext(t);
     }
 }

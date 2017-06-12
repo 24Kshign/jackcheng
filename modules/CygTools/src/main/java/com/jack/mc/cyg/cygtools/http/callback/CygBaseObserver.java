@@ -1,8 +1,6 @@
 package com.jack.mc.cyg.cygtools.http.callback;
 
 import android.accounts.NetworkErrorException;
-import android.app.Activity;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.google.gson.JsonSyntaxException;
@@ -18,33 +16,29 @@ import java.net.UnknownHostException;
 /**
  * 对请求失败的分类操作
  */
-public abstract class CygSubscriberApi<T> extends BaseSubscriber<T> {
+public abstract class CygBaseObserver<T> extends BaseObserver<T> {
 
-    private static final String TAG = "CygSubscriberApi";
+    private static final String TAG = "CygBaseObserver";
 
     private boolean isNeedProgress;
     private String titleMsg;
 
-    public CygSubscriberApi(Activity activity) {
-        this(activity, null);
+    public CygBaseObserver() {
+        this(null, null);
     }
 
-    public CygSubscriberApi(Activity activity, String titleMsg) {
-        super(activity);
+    public CygBaseObserver(BaseImpl base) {
+        this(base, null);
+    }
+
+    public CygBaseObserver(BaseImpl base, String titleMsg) {
+        super(base);
         this.titleMsg = titleMsg;
         if (CygString.isEmpty(titleMsg)) {
             this.isNeedProgress = false;
         } else {
             this.isNeedProgress = true;
         }
-    }
-
-    public CygSubscriberApi(Fragment fragment, String titleMsg) {
-        this(fragment.getActivity(), titleMsg);
-    }
-
-    public CygSubscriberApi(Fragment fragment) {
-        this(fragment.getActivity(), null);
     }
 
     @Override
