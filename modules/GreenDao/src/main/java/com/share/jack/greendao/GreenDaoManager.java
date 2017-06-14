@@ -13,9 +13,11 @@ public class GreenDaoManager {
     private DaoMaster daoMaster;
     private DaoSession daoSession;
 
+    private static final String DB_NAME = "testCyg.db";
+
     private GreenDaoManager() {
         if (devOpenHelper == null || daoMaster == null || daoSession == null) {
-            devOpenHelper = new DaoMaster.DevOpenHelper(CygApplication.getInstance(), "testCyg.db", null);
+            devOpenHelper = new DaoMaster.DevOpenHelper(CygApplication.getInstance(), DB_NAME, null);
             daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
             daoSession = daoMaster.newSession();
         }

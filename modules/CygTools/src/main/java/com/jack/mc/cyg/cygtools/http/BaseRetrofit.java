@@ -45,7 +45,6 @@ public abstract class BaseRetrofit {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
-
     }
 
     protected Map<String, String> getCommonMap() {
@@ -54,10 +53,23 @@ public abstract class BaseRetrofit {
 
     protected <T> void toSubscribe(Observable<T> observable, Observer<T> observer) {
         observable.subscribeOn(Schedulers.io())    // 指定subscribe()发生在IO线程
-                .unsubscribeOn(Schedulers.io())    // 指定取消subscribe()发生在IO线程
                 .observeOn(AndroidSchedulers.mainThread())  // 指定Subscriber的回调发生在io线程
                 .timeout(DEFAULT_TIME, TimeUnit.SECONDS)    //重连间隔时间
-                .retry(RETRY_TIMES)    //接收到onError()事件后触发重订阅
+                .retry(RETRY_TIMES)
+//                .repeatWhen(new Function<Observable<Object>, ObservableSource<?>>() {
+//                    @Override
+//                    public ObservableSource<?> apply(@NonNull Observable<Object> objectObservable) throws Exception {
+//                        return objectObservable.flatMap(new Function<Object, ObservableSource<?>>() {
+//                            @Override
+//                            public ObservableSource<?> apply(@NonNull Object o) throws Exception {
+//                                if (o instanceof IOException) {
+//                                    return Observable.error(new Throwable("retryWhen终止啦"));
+//                                }
+//                                return null;
+//                            }
+//                        });
+//                    }
+//                })
                 .subscribe(observer);   //订阅
     }
 

@@ -22,8 +22,8 @@ public class BaseResponse<T> implements Serializable {
         return status;
     }
 
-    public void setStatus(Integer code) {
-        this.status = code;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getMsg() {

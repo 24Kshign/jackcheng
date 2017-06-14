@@ -39,7 +39,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
         }
     }
 
-    protected void dismissProgressDialog() {
+    private void dismissProgressDialog() {
         if (mProgressDialogHandler != null) {
             mProgressDialogHandler.obtainMessage(ProgressDialogHandler.DISMISS_PROGRESS_DIALOG).sendToTarget();
             mProgressDialogHandler = null;
@@ -53,7 +53,9 @@ public abstract class BaseObserver<T> implements Observer<T> {
             showProgressDialog();
         }
         if (null != mBaseImpl) {
-            mBaseImpl.addDisposable(d);
+            if (null != d) {
+                mBaseImpl.addDisposable(d);
+            }
         }
     }
 
@@ -61,7 +63,7 @@ public abstract class BaseObserver<T> implements Observer<T> {
     public void onNext(T value) {
         //成功
         CygLog.debug("http is onNext");
-        if (null!=value) {
+        if (null != value) {
             onBaseNext(value);
         }
     }
